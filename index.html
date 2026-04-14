@@ -2,73 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>VHS Effect</title>
+<title>VHS Lines Only</title>
 
 <style>
 body {
   margin: 0;
   background: black;
   overflow: hidden;
-  color: white;
-  font-family: monospace;
 }
 
-/* Content */
-.screen {
-  position: relative;
+/* FULLSCREEN VHS LINES */
+.vhs-lines {
+  position: fixed;
+  top: -100%;
+  left: 0;
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
+  height: 300vh;
+
+  background-image: url("https://i.imgur.com/8KrmQ4P.png"); /* scanlines PNG */
+  background-repeat: repeat;
+
+  opacity: 0.4;
+
+  animation: move 0.1s linear infinite;
 }
 
-/* TEXT */
-.screen h1 {
-  z-index: 1;
-}
-
-/* VHS scanlines */
-.screen::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.15) 0px,
-    rgba(255,255,255,0.15) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-
-  animation: moveLines 0.2s linear infinite;
-  pointer-events: none;
-}
-
-/* movement */
-@keyframes moveLines {
+@keyframes move {
   0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
-}
-
-/* flicker */
-.screen {
-  animation: flicker 0.1s infinite;
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.9; }
+  100% { transform: translateY(100px); }
 }
 </style>
 </head>
 
 <body>
-<div class="screen">
-  <h1>VHS MODE</h1>
-</div>
+
+<div class="vhs-lines"></div>
+
 </body>
 </html>
