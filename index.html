@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VHS Effect</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+}
+
+/* Your content */
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("https://picsum.photos/1920/1080") center/cover;
+}
+
+/* VHS scanlines */
+.screen::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 300%;
+  
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+
+  animation: scanlines 2s linear infinite;
+}
+
+/* Moving effect */
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100px); }
+}
+</style>
+</head>
+
+<body>
+<div class="screen"></div>
+</body>
+</html>
